@@ -1,13 +1,13 @@
 FROM python:3
 
-WORKDIR /usr/src/app
+RUN mkdir /workdir && cd /workdir
+WORKDIR /workdir
 
-COPY requirements.txt ./
+#COPY requirements.txt ./
 
-RUN python -m pip install --no-cache-dir -r requirements.txt
-RUN python -m pipx install poetry
-RUN python -m pipx ensurepath
-RUN poetry run
+RUN apt-get update && apt-get install -y python3-poetry
+
+#RUN poetry run
 
 #COPY . .
 #CMD [ "python", "./main.py" ]
